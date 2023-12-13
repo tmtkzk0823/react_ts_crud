@@ -1,4 +1,4 @@
 export const Todo = (props) => {
-  const { title, userId } = props;
-  return <p>{`${title}, ユーザーID${userId}`}</p>
+  const { title, userid } = props;
+  return <p>{`${title}, ユーザーID${userid}`}</p>
 }
