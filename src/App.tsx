@@ -4,9 +4,16 @@ import { useState } from 'react'
 import { Todo } from './Todo'
 import { TodoType } from './types/todo'
 import { Text } from './Text'
+import { UserProfile } from './UserProfile'
+import { User } from './types/user'
 
 export default function App() {
   const [todos, setTodos] = useState<Array<TodoType>>([])
+
+  const user : User = {
+    name: 'tommy',
+    //hobbies: ['バドミントン', 'キャンプ']
+  }
 
   const onClickFetchData = () => {
     axios.get<Array<TodoType>>('https://jsonplaceholder.typicode.com/todos')
@@ -21,6 +28,7 @@ export default function App() {
   return (
     <>
       <div className="App">
+        <UserProfile user = {user}/>
         <Text color='red' fontSize='20px'/>
         <button onClick={onClickFetchData}>データ取得</button>
         {todos.map((todo) => (
