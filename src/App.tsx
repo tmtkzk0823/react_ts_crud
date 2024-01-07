@@ -1,11 +1,20 @@
+// ライブラリ
 import axios from 'axios'
+
 import './App.css'
+
+// react
 import { useState } from 'react'
-import { Todo } from './Todo'
+
+//types
 import { TodoType } from './types/todo'
-import { Text } from './Text'
-import { UserProfile } from './UserProfile'
 import { User } from './types/user'
+
+//componnets
+import { UserProfile } from './UserProfile'
+import { UserCard } from './components/UserCard'
+import { Todo } from './Todo'
+import { Text } from './Text'
 
 export default function App() {
   const [todos, setTodos] = useState<Array<TodoType>>([])
@@ -15,6 +24,12 @@ export default function App() {
     //hobbies: ['バドミントン', 'キャンプ']
   }
 
+   const userCard = {
+    id: 1,
+    name: 'tommy',
+    email: 'example.com',
+    address: 'tokyo'
+   }
   const onClickFetchData = () => {
     axios.get<Array<TodoType>>('https://jsonplaceholder.typicode.com/todos')
       .then((res) => {
@@ -33,12 +48,13 @@ export default function App() {
         <button onClick={onClickFetchData}>データ取得</button>
         {todos.map((todo) => (
         < Todo
-          key={todo.id} 
-          title={todo.title} 
-          userId={todo.userId} 
+          key={todo.id}
+          title={todo.title}
+          userId={todo.userId}
           completed={todo.completed}
         />
         ))}
+        <UserCard user={userCard}/>
       </div>
     </>
   )
