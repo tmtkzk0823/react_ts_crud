@@ -1,4 +1,4 @@
-export type UserCard = {
+export type ApiUsers = {
   id: number;
 name: string;
 username: string;

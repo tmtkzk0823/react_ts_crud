@@ -1,9 +1,9 @@
-import { UserProfile } from "../types/userProfile";
+import { UserStatus } from "../types/userProfile";
 
 import { FC } from "react";
 
 type Props = {
-  user: UserProfile
+  user: UserStatus
 }
 
 const style = {
